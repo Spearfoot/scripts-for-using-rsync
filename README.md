@@ -8,6 +8,12 @@ I wrote these wrapper scripts for the purpose of duplicating datasets from my pr
 
 My goal was to copy new or changed files and also to remove files on the target that had been deleted on the source. If your needs are different, particularly if you want to keep files on the target that have been deleted on the source, then you will need to remove the `--delete-during` option used in the scripts.
 
+There are two scripts in this repository: one for use with modules (__rsync-module.sh__) and one for standalone use (__rsync-invoke.sh__).
+
+__Slow Network Performance__
+
+Just about every rsync user notices how slow it is at transferring data. This is usually due to using SSH as the transport protocol, with its attendant encryption. A common approach to overcoming slow transfers is to use less CPU-intensive encryption algorithms or to do away with encryption altogether. I have found that using rsync modules is faster than standalone mode, and that disabling encryption speeds up standalone transfers.
+
 __Windows ACL Data__
 
 Copying Windows ACLs can be a problem on some systems, particularly FreeNAS/FreeBSD, and I have selected options to avoid problems with this issue.
@@ -17,4 +23,6 @@ On some Linux distributions, __rysnc__ may support copying Windows ACLs directly
 To determine whether your environment supports copying Windows ACLs, explore these rsync options:
 - `-A --acls  preserve ACLs (implies -p)`
 - `-X --xattrs preserve extended attributes`
+
+__Options__
 
