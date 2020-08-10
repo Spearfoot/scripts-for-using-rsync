@@ -1,4 +1,4 @@
-# Wrapper scripts for using rsync
+# Scripts for using rsync
 
 The __rsync__ command -- whether used standalone or installed as a module -- is a powerful tool for copying filesets between UNIX-style systems. It is very efficient in that it only copies new or changed data to the target system.
 
