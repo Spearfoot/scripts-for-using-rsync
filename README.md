@@ -8,7 +8,7 @@ I wrote these wrapper scripts for the purpose of duplicating datasets from my pr
 
 My goal was to copy new or changed files and also to remove files on the target that had been deleted on the source. If your needs are different, particularly if you want to keep files on the target that have been deleted on the source, then you will need to remove the `--delete-during` option used in the scripts.
 
-### The scripts
+### The Scripts
 There are two scripts in this repository: one for use with modules (__rsync-module.sh__) and one to run __rsync__ directly (__rsync-invoke.sh__). Both scripts require 3 command-line arguments:
 - The source specification
 - The target specification
@@ -69,10 +69,27 @@ These are the options used in both scripts:
 --log-file        specify log file
 ```
 
-## Example usage
+## Example Usage
 
-I run this `chron` script early every morning to synchronize datasets from my primary FreeNAS server 'BANDIT' to my secondary server 'BOOMER'. On both servers the datasets are stored on a pool named 'tank':
+I run this `chron` script early every morning to synchronize datasets from my primary FreeNAS server 'BANDIT' to my secondary server 'BOOMER', using the __rsync__ module installed on 'BOOMER'. On both servers the datasets are stored on a pool named 'tank':
 
+```
+#!/bin/sh
+
+# Synchronize all tank datasets from BANDIT to BOOMER
+
+logfile=/mnt/tank/bandit/log/bandit-to-boomer.log
+
+datasets="archives backups devtools domains hardware media music ncs opsys photo systools web"
+
+rm ${logfile}
+for dataset in $datasets; do
+    # Use rsync-module.sh to target the rsync module on the remote server:
+    /mnt/tank/systems/scripts/rsync-module.sh /mnt/tank/$dataset/ root@boomer-storage/tank/$dataset ${logfile}
+done
+```
+
+This script would do exactly the same thing, only using __rsync-invoke.sh__ to call __rsync__ directly instead of targeting the remote server's module:
 ```
 #!/bin/sh
 
@@ -86,8 +103,6 @@ rm ${logfile}
 for dataset in $datasets; do
     # Use rsync-invoke.sh to run rsync directly:
     # /mnt/tank/systems/scripts/rsync-invoke.sh /mnt/tank/$dataset/ root@boomer-storage:/mnt/tank/$dataset ${logfile}
-    # Use rsync-module.sh to target the rsync module on the remote server:
-    /mnt/tank/systems/scripts/rsync-module.sh /mnt/tank/$dataset/ root@boomer-storage/tank/$dataset ${logfile}
-done
+ done
 ```
 
