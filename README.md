@@ -83,8 +83,16 @@ These are the options used in both scripts:
 --delete-during   receiver deletes during the transfer
 --inplace         write updated data directly to destination file
 --log-file        specify log file
+--exclude         exclude files
 ```
-
+Both scripts exclude the following files; modify or remove to suit your needs:
+```
+vmware.log      VMware virtual machine log files
+vmware-*.log
+@eaDir/         Synology extended attributes
+@eaDir
+Thumbs.db       Windows folder-related system file
+```
 The __rsync-invoke.sh__ script disables __SSH__ encryption and compression with these settings:
 ```
 -e "ssh -T -c none -o Compression=no -x"
