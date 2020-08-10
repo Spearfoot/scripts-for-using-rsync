@@ -30,6 +30,9 @@ To use the __rsync-invoke.sh__ to copy __foo__, use this command line:
 
 After the script completes you can examine the log file for results.
 
+### Prerequisites: SSH
+Since __rsync__ uses __ssh__, you will need to configure __ssh__ key-based authentication to allow logging on to your target servers without having to enter a password.
+
 ### Slow Network Performance
 
 Just about every __rsync__ user notices how slow it is at transferring data. This is usually due to using SSH as the transport protocol, with its attendant encryption. A common approach to overcoming slow transfers is to use less CPU-intensive encryption algorithms or to do away with encryption altogether. I have found that using __rsync__ modules is faster than standalone mode, and that disabling encryption speeds up standalone transfers.
