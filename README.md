@@ -16,7 +16,7 @@ There are two scripts in this repository: one for use with modules (__rsync-modu
 
 Telling __rsync__ what to copy is a bit arcane: you have to be careful about placing the '/' character correctly. Basically, to copy a dataset from the source to the target you add a trailing '/' to the source specification and leave it off the target.
 
-This is easier to explain with an example: to use the __rsync-invoke.sh__ to copy dataset __foo__ to server 'BOOMER', use this command line:
+This is easier to explain with an example: to use __rsync-invoke.sh__ to copy dataset __foo__ to server 'BOOMER', use this command line:
 
 `./rsync-invoke.sh /mnt/tank/foo/ root@boomer:/mnt/tank/foo /mnt/tank/bandit/log/rsync.log`
 
