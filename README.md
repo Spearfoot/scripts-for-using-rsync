@@ -10,8 +10,8 @@ My goal was to copy new or changed files and also to remove files on the target 
 
 ### The Scripts
 There are two scripts in this repository: one for use with modules (__rsync-module.sh__) and one to run __rsync__ directly (__rsync-invoke.sh__). Both scripts require 3 command-line arguments:
-- The source specification - example: `/mnt/tank/foo/'
-- The target specification, including username and hostname - example: `root@boomer:/mnt/tank/foo'
+- The source specification - example: `/mnt/tank/foo/`
+- The target specification, including username and hostname - example: `root@boomer:/mnt/tank/foo`
 - A log filename
 
 Telling __rsync__ what to copy is a bit arcane: you have to be careful about placing the '/' character correctly. Basically, to copy a dataset from the source to the target you add a trailing '/' to the source specification and leave it off the target.
