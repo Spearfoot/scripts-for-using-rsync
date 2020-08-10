@@ -102,7 +102,7 @@ If your system does not support `none` as an encryption scheme, try `arcfour` or
 
 ## Example Usage
 
-I run this `chron` script early every morning to synchronize datasets from my primary FreeNAS server 'BANDIT' to my secondary server 'BOOMER', using the __rsync__ module installed on 'BOOMER'. On both servers the datasets are stored on a pool named 'tank':
+I run this `cron` script early every morning to synchronize datasets from my primary FreeNAS server 'BANDIT' to my secondary server 'BOOMER', using the __rsync__ module installed on 'BOOMER'. On both servers the datasets are stored on a pool named 'tank':
 
 ```
 #!/bin/sh
