@@ -115,11 +115,11 @@ datasets="archives backups devtools domains hardware media music ncs opsys photo
 rm ${logfile}
 for dataset in $datasets; do
     # Use rsync-module.sh to target the rsync module on the remote server:
-    /mnt/tank/systems/scripts/rsync-module.sh /mnt/tank/$dataset/ root@boomer-storage/tank/$dataset ${logfile}
+    /mnt/tank/systems/scripts/rsync-module.sh /mnt/tank/$dataset/ root@boomer/tank/$dataset ${logfile}
 done
 ```
 
-This script would do exactly the same thing, only using __rsync-invoke.sh__ to call __rsync__ directly instead of targeting the remote server's module:
+This script does exactly the same thing, only using __rsync-invoke.sh__ to call __rsync__ directly instead of targeting the remote server's module:
 ```
 #!/bin/sh
 
@@ -132,7 +132,7 @@ datasets="archives backups devtools domains hardware media music ncs opsys photo
 rm ${logfile}
 for dataset in $datasets; do
     # Use rsync-invoke.sh to run rsync directly:
-    # /mnt/tank/systems/scripts/rsync-invoke.sh /mnt/tank/$dataset/ root@boomer-storage:/mnt/tank/$dataset ${logfile}
+    # /mnt/tank/systems/scripts/rsync-invoke.sh /mnt/tank/$dataset/ root@boomer:/mnt/tank/$dataset ${logfile}
  done
 ```
 
