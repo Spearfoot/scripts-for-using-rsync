@@ -12,27 +12,10 @@ R_DEST=$2
 R_LOGFILE=$3
 
 # Options:
-#   -r  recurse into directories
-#   -l  copy symlinks as symlinks
-#   -t  preserve modification times
-#   -g  preserve group
-#   -o  preserve owner
-#   -D  preserve device and special files
-#   -h  human readable progress
-#   -v  increase verbosity
-
-#   --delete-during   receiver deletes during the transfer
-#   --inplace         write updated data directly to destination file
-#   --log-file        specify log file
 
 R_OPTIONS="-rltgoDhv --delete-during --inplace --progress --log-file="${R_LOGFILE}
 
 # Files to exclude:
-#   vmware.log    VMware virtual machine log files
-#   vmware-*.log
-#   @eaDir/       Synology extended attributes (?)
-#   @eaDir
-#   Thumbs.db     Windows system files
 
 R_EXCLUDE="--exclude vmware.log --exclude vmware-*.log --exclude @eaDir/ --exclude @eaDir --exclude Thumbs.db"
 
