@@ -8,7 +8,27 @@ I wrote these wrapper scripts for the purpose of duplicating datasets from my pr
 
 My goal was to copy new or changed files and also to remove files on the target that had been deleted on the source. If your needs are different, particularly if you want to keep files on the target that have been deleted on the source, then you will need to remove the `--delete-during` option used in the scripts.
 
-There are two scripts in this repository: one for use with modules (__rsync-module.sh__) and one for standalone use (__rsync-invoke.sh__).
+### The scripts
+There are two scripts in this repository: one for use with modules (__rsync-module.sh__) and one to run __rsync__ directly (__rsync-invoke.sh__). Both scripts require 3 command-line arguments:
+- The source specification
+- The target specification
+- A log filename
+
+Telling __rsync__ what to copy is a bit arcane: you have to be careful about placing the '/' character correctly. Basically, to copy a dataset from the source to the target you add a trailing '/' to the source specification and leave it off the target. 
+
+To copy dataset __foo__, mounted on pool __tank__, specify the source this way:
+
+`/mnt/tank/foo/`
+
+And leave off the trailing '/' on the target:
+
+`/mnt/tank/foo`
+
+To use the __rsync-invoke.sh__ to copy __foo__, use this command line:
+
+`./rsync-invoke.sh /mnt/tank/foo/ root@boomer:/mnt/tank/foo /mnt/tank/bandit/log/rsync.log`
+
+After the script completes you can examine the log file for results.
 
 ### Slow Network Performance
 
@@ -50,23 +70,6 @@ These are the options used in both scripts:
 ```
 
 ## Example usage
-
-Both scripts take 3 command-line arguments:
-- The source specification
-- The target specification
-- A log filename
-
-Telling __rsync__ what to copy is a bit arcane: you have to be careful about placing the '/' character correctly. Basically, to copy a dataset from the source to the target you add a trailing '/' to the source specification and leave it off the target. To copy dataset __foo__, mounted on pool __tank__, you would specify the source this way:
-
-`/mnt/tank/foo/`
-
-And leave off the trailing '/' on the target:
-
-`/mnt/tank/foo`
-
-To use the __rsync-invoke.sh__ to accomplish this, you would use this command line:
-
-`./rsync-invoke.sh /mnt/tank/foo/ root@boomer:/mnt/tank/foo /mnt/tank/bandit/log/rsync.log`
 
 I run this `chron` script early every morning to synchronize datasets from my primary FreeNAS server 'BANDIT' to my secondary server 'BOOMER'. On both servers the datasets are stored on a pool named 'tank':
 
