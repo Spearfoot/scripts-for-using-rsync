@@ -60,10 +60,10 @@ datasets="archives backups devtools domains hardware media music ncs opsys photo
 
 rm ${logfile}
 for dataset in $datasets; do
-# Use rsync-invoke.sh to run rsync directly:
-#  /mnt/tank/systems/scripts/rsync-invoke.sh /mnt/tank/$dataset/ root@boomer-storage:/mnt/tank/$dataset ${logfile}
-# Use rsync-module.sh to target the rsync module on the remote server:
-  /mnt/tank/systems/scripts/rsync-module.sh /mnt/tank/$dataset/ root@boomer-storage/tank/$dataset ${logfile}
+    # Use rsync-invoke.sh to run rsync directly:
+    # /mnt/tank/systems/scripts/rsync-invoke.sh /mnt/tank/$dataset/ root@boomer-storage:/mnt/tank/$dataset ${logfile}
+    # Use rsync-module.sh to target the rsync module on the remote server:
+    /mnt/tank/systems/scripts/rsync-module.sh /mnt/tank/$dataset/ root@boomer-storage/tank/$dataset ${logfile}
 done
 ```
 
