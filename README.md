@@ -24,7 +24,22 @@ Modules work a little differently when specifying the path. You don't separate t
 
 `./rsync-module.sh /mnt/tank/foo/ root@boomer/tank/foo /mnt/tank/bandit/log/rsync.log`
 
-After the script completes you can examine the log file for results.
+After either of the examples above complete, you can examine log file `/mnt/tank/bandit/log/rsync.log` for results, which will look something like this:
+```
++---------------------------------------------------------------------------------
++ Mon Aug 10 04:00:05 CDT 2020: Copy /mnt/tank/foo/ to root@boomer/tank/foo
++---------------------------------------------------------------------------------
+2020/08/10 04:00:06 [10732] building file list
+2020/08/10 04:00:37 [10732] *deleting   ONYX/Macrium/onyx-system3-00-00.mrimg
+2020/08/10 04:00:37 [10732] *deleting   ONYX/Macrium/onyx-data3-00-00.mrimg
+2020/08/10 04:00:37 [10732] .d..t...... ONYX/Macrium/
+2020/08/10 04:00:37 [10732] <f.st...... ONYX/Macrium/file-groom.log
+2020/08/10 04:08:02 [10732] <f+++++++++ ONYX/Macrium/onyx-data1-00-00.mrimg
+2020/08/10 04:10:35 [10732] <f+++++++++ ONYX/Macrium/onyx-system2-00-00.mrimg
+2020/08/10 04:10:36 [10732] sent 129.62G bytes  received 5.02K bytes  205.26M bytes/sec
+2020/08/10 04:10:36 [10732] total size is 2.93T  speedup is 22.58
++ Mon Aug 10 04:10:36 CDT 2020 Transfer completed
+```
 
 ### Prerequisites: SSH
 Since __rsync__ uses __ssh__, you will need to configure __ssh__ key-based authentication to allow logging on to your target servers without having to enter a password.
