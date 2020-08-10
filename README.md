@@ -26,6 +26,7 @@ Copying Windows ACLs can be a problem on some systems, particularly FreeNAS/Free
 
 On some Linux distributions, __rsync__ may support copying Windows ACLs directly, while on others it will not. In the latter case, users have reported success using __robocopy__ in conjunction with __rsync__ to transfer Windows ACL data.
 
+
 To determine whether your environment supports copying Windows ACLs, explore the options above along with:
 - `-X --xattrs preserve extended attributes`
 
@@ -43,3 +44,24 @@ These are the options used in both scripts:
 - `--delete-during   receiver deletes during the transfer`
 - `--inplace         write updated data directly to destination file`
 - `--log-file        specify log file`
+
+# Example usage
+
+I run this script early every morning to synchronize dataset from my primary FreeNAS server 'BANDIT' to my secondary server 'BOOMER'
+
+`#!/bin/sh`
+``
+`# Synchronize all tank datasets from BANDIT to BOOMER`
+``
+`logfile=/mnt/tank/bandit/log/bandit-to-boomer.log`
+``
+`# Leave off these datasets, which are unneeded or targeted to BOOMER via replication: bandit, homes, systems, users`
+`
+`datasets="archives backups devtools domains hardware media music ncs odllc opsys photo systools web"`
+``
+`rm ${logfile}`
+`for dataset in $datasets; do`
+`#  /mnt/tank/systems/scripts/rsync-invoke.sh /mnt/tank/$dataset/ root@boomer-storage:/mnt/tank/$dataset ${logfile}`
+`  /mnt/tank/systems/scripts/rsync-module.sh /mnt/tank/$dataset/ root@boomer-storage/tank/$dataset ${logfile}`
+`done`
+
