@@ -51,7 +51,7 @@ These are the options used in both scripts:
 
 ## Example usage
 
-I run this script early every morning to synchronize dataset from my primary FreeNAS server 'BANDIT' to my secondary server 'BOOMER'
+I run this script early every morning to synchronize datasets from my primary FreeNAS server 'BANDIT' to my secondary server 'BOOMER', in both cases the datasets are stored on a pool named 'tank':
 
 ```
 #!/bin/sh
