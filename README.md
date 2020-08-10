@@ -49,19 +49,21 @@ These are the options used in both scripts:
 
 I run this script early every morning to synchronize dataset from my primary FreeNAS server 'BANDIT' to my secondary server 'BOOMER'
 
-`#!/bin/sh`
-``
-`# Synchronize all tank datasets from BANDIT to BOOMER`
-``
-`logfile=/mnt/tank/bandit/log/bandit-to-boomer.log`
-``
-`# Leave off these datasets, which are unneeded or targeted to BOOMER via replication: bandit, homes, systems, users`
-`
-`datasets="archives backups devtools domains hardware media music ncs odllc opsys photo systools web"`
-``
-`rm ${logfile}`
-`for dataset in $datasets; do`
-`#  /mnt/tank/systems/scripts/rsync-invoke.sh /mnt/tank/$dataset/ root@boomer-storage:/mnt/tank/$dataset ${logfile}`
-`  /mnt/tank/systems/scripts/rsync-module.sh /mnt/tank/$dataset/ root@boomer-storage/tank/$dataset ${logfile}`
-`done`
+```
+#!/bin/sh
+
+# Synchronize all tank datasets from BANDIT to BOOMER
+
+logfile=/mnt/tank/bandit/log/bandit-to-boomer.log
+
+datasets="archives backups devtools domains hardware media music ncs opsys photo systools web"
+
+rm ${logfile}
+for dataset in $datasets; do
+# Use rsync-invoke.sh to run rsync directly:
+#  /mnt/tank/systems/scripts/rsync-invoke.sh /mnt/tank/$dataset/ root@boomer-storage:/mnt/tank/$dataset ${logfile}
+# Use rsync-module.sh to target the rsync module on the remote server:
+  /mnt/tank/systems/scripts/rsync-module.sh /mnt/tank/$dataset/ root@boomer-storage/tank/$dataset ${logfile}
+done
+```
 
