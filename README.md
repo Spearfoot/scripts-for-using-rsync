@@ -82,6 +82,7 @@ These are the options used in both scripts:
 -v  increase verbosity
 --delete-during   receiver deletes during the transfer
 --inplace         write updated data directly to destination file
+--progress        show progress during transfer  
 --log-file        specify log file
 --exclude         exclude files
 ```
