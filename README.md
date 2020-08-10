@@ -18,13 +18,28 @@ On my 10Gb network, I get transfer rates of up to 2Gb/s using __rsync-module.sh_
 
 __Windows ACL Data__
 
-Copying Windows ACLs can be a problem on some systems, particularly FreeNAS/FreeBSD, and I have selected options to avoid problems with this issue.
+Copying Windows ACLs can be a problem on some systems, particularly FreeNAS/FreeBSD, and I have selected options to avoid problems with this issue. On FreeNAS this means avoiding these options:
+
+- `-a, --archive Equals -rlptgoD (no -H, -A, -X)`
+- `-p, --perms   Preserve permissions`
+- `-A, --acls    Preserve ACLs (implies -p)
 
 On some Linux distributions, __rysnc__ may support copying Windows ACLs directly, while on others it will not. In the latter case, users have reported success using robocopy in conjunction with rsync to transfer Windows ACL data.
 
-To determine whether your environment supports copying Windows ACLs, explore these rsync options:
-- `-A --acls  preserve ACLs (implies -p)`
+To determine whether your environment supports copying Windows ACLs, explore the options above along with:
 - `-X --xattrs preserve extended attributes`
 
 __Options__
 
+These are the options used in both scripts:
+- `-r  recurse into directories`
+- `-l  copy symlinks as symlinks`
+- `-t  preserve modification times`
+- `-g  preserve group`
+- `-o  preserve owner`
+- `-D  preserve device and special files`
+- `-h  human readable progress`
+- `-v  increase verbosity`
+- `--delete-during   receiver deletes during the transfer`
+- `--inplace         write updated data directly to destination file`
+- `--log-file        specify log file`
