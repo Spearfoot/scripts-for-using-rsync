@@ -68,7 +68,7 @@ To use the __rsync-invoke.sh__ to accomplish this, you would use this command li
 
 `./rsync-invoke.sh /mnt/tank/foo/ root@boomer:/mnt/tank/foo /mnt/tank/bandit/log/rsync.log`
 
-I run this script early every morning to synchronize datasets from my primary FreeNAS server 'BANDIT' to my secondary server 'BOOMER'. On both servers the datasets are stored on a pool named 'tank':
+I run this `chron` script early every morning to synchronize datasets from my primary FreeNAS server 'BANDIT' to my secondary server 'BOOMER'. On both servers the datasets are stored on a pool named 'tank':
 
 ```
 #!/bin/sh
