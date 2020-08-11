@@ -45,6 +45,7 @@ After either of the examples above complete, you can examine log file `/mnt/tank
 My use of these scripts is strictly _push_ oriented: the 'source' I specify is always a local dataset; the 'target' is always on a remote system. But note that you can use __rsync-invoke.sh__ to _pull_ data from a remote system as well.
 
 Example: this command will copy remote dataset 'foo' to the local system:
+
 `./rsync-invoke.sh root@boomer:/mnt/tank/foo/ /mnt/tank/foo /mnt/tank/bandit/log/rsync.log`
 
 The module script (__rsync-module.sh__) is strictly _pull_ oriented: it can only be used to copy data from the local system to a remote rsync module because the target specifier has the 'rsync:' prefix hard-coded. But you could easily modify a copy of this script and put the 'rsync:' prefix on the source specifier if you need _pull_ capability.
