@@ -48,7 +48,7 @@ Example: this command will copy dataset 'foo' from remote server 'BOOMER' to the
 
 `./rsync-invoke.sh root@boomer:/mnt/tank/foo/ /mnt/tank/foo /mnt/tank/bandit/log/rsync.log`
 
-The module script (__rsync-module.sh__) is strictly _pull_ oriented: it can only be used to copy data from the local system to a remote rsync module because the target specifier has the `rsync://` prefix hard-coded. But you could easily modify a copy of this script and put the `rsync://` prefix on the source specifier if you need _pull_ capability.
+The module script (__rsync-module.sh__) is strictly _push_ oriented: it can only be used to copy data from the local system to a remote rsync module because the target specifier has the `rsync://` prefix hard-coded. But you could easily modify a copy of this script and put the `rsync://` prefix on the source specifier if you need _pull_ capability.
 
 ### Prerequisites: SSH
 Since __rsync__ uses __ssh__, you will need to configure __ssh__ key-based authentication to allow logging on to your target servers without having to enter a password.
