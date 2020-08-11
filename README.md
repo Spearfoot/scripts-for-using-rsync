@@ -44,7 +44,7 @@ After either of the examples above complete, you can examine log file `/mnt/tank
 ### Push or Pull?
 My use of these scripts is strictly _push_ oriented: the 'source' I specify is always a local dataset; the 'target' is always on a remote system. But note that you can use __rsync-invoke.sh__ to _pull_ data from a remote system as well.
 
-Example: this command will copy remote dataset 'foo' to the local system:
+Example: this command will copy remote dataset 'foo' from remote server 'BOOMER' to the local system:
 
 `./rsync-invoke.sh root@boomer:/mnt/tank/foo/ /mnt/tank/foo /mnt/tank/bandit/log/rsync.log`
 
