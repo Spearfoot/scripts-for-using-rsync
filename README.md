@@ -142,7 +142,7 @@ datasets="archives backups devtools domains hardware media music ncs opsys photo
 rm ${logfile}
 for dataset in $datasets; do
     # Use rsync-invoke.sh to run rsync directly:
-    # /mnt/tank/systems/scripts/rsync-invoke.sh /mnt/tank/$dataset/ root@boomer:/mnt/tank/$dataset ${logfile}
+    /mnt/tank/systems/scripts/rsync-invoke.sh /mnt/tank/$dataset/ root@boomer:/mnt/tank/$dataset ${logfile}
  done
 ```
 
