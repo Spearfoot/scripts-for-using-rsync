@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Push to rsync module on target
+
 if [ $# -ne 3 ]; then
   echo "Error: not enough arguments!"
   echo "Usage is: $0 r_src r_dest r_logfile"
