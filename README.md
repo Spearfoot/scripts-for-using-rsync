@@ -51,16 +51,18 @@ Example: this command will copy dataset 'foo' from remote server 'BOOMER' to the
 The module script (__rsync-module.sh__) is strictly _push_ oriented: it can only be used to copy data from the local system to a remote rsync module because the target specifier has the `rsync://` prefix hard-coded. But you could easily modify a copy of this script and put the `rsync://` prefix on the source specifier if you need _pull_ capability.
 
 ### Prerequisites: SSH
-Since __rsync__ uses __ssh__, you will need to configure __ssh__ key-based authentication to allow logging on to your target servers without having to enter a password.
+Since __rsync__ typically uses __ssh__, you will need to configure __ssh__ key-based authentication to allow logging on to your target servers without having to enter a password.
 
 ### Prerequisites: rsync modules
-You will need to configure __rsync__ modules if you plan to use them as targets. On my FreeNAS server 'BOOMER' I have configured a single __rsync__ module named 'tank', with a path of /mnt/tank', access mode of 'Read and Write', user 'root', and group 'wheel'.
+You will need to configure __rsync__ modules if you plan to use them as targets. 
+
+Example: on my FreeNAS server 'BOOMER' I have configured a single __rsync__ module named 'tank', with a path of '/mnt/tank', access mode of 'Read and Write', user 'root', and group 'wheel'.
 
 ### Slow Network Performance
 
-Just about every __rsync__ user notices how slow it is at transferring data. This is usually due to using __ssh__ as the transport protocol, with its attendant encryption. A common approach to overcoming slow transfers is to use less CPU-intensive encryption algorithms or to do away with encryption altogether. I have found that using __rsync__ modules is faster than standalone mode, and that disabling encryption speeds up standalone transfers.
+Just about every __rsync__ user notices how slow it is at transferring data. This is usually due to using __ssh__ as the transport protocol, with its attendant encryption. A common approach to overcoming slow transfers is to use less CPU-intensive encryption algorithms or to do away with encryption altogether. I have found that using __rsync__ modules is much faster than standalone mode, and that disabling encryption speeds up standalone transfers.
 
-On my 10Gb network, I get transfer rates of up to 2Gb/s using __rsync-module.sh__, which is quite a bit faster than the typical __rsync-invoke.sh__ rate of roughly 800Mb/s.
+On my 10Gb network, I get transfer rates of up to 2Gb/s using __rsync-module.sh__, quite a bit faster than the typical __rsync-invoke.sh__ rate of roughly 800Mb/s.
 
 ### Windows ACL Data
 
@@ -79,7 +81,7 @@ To determine whether your environment supports copying Windows ACLs, explore the
 
 ### Options
 
-These are the options used in both scripts:
+These are the __rsync__ options used in both scripts:
 ```
 -r  recurse into directories
 -l  copy symlinks as symlinks
@@ -129,7 +131,7 @@ for dataset in $datasets; do
 done
 ```
 
-This script does exactly the same thing, only using __rsync-invoke.sh__ to call __rsync__ directly instead of targeting the remote server's module:
+This script does exactly the same thing, only using __rsync-invoke.sh__ to call __rsync__ directly:
 ```
 #!/bin/sh
 
