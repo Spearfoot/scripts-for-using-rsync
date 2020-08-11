@@ -21,10 +21,10 @@ R_OPTIONS="-rltgoDhv --delete-during --inplace --progress --log-file="${R_LOGFIL
 
 R_EXCLUDE="--exclude vmware.log --exclude vmware-*.log --exclude @eaDir/ --exclude @eaDir --exclude Thumbs.db"
 
-echo "+---------------------------------------------------------------------------------" | tee -a ${R_LOGFILE}
+echo "+---------------------------------------------------------------------------------" | tee -a "${R_LOGFILE}"
 echo "+ $(date): Copy $R_SRC to $R_DEST" | tee -a ${R_LOGFILE}
-echo "+---------------------------------------------------------------------------------" | tee -a ${R_LOGFILE}
+echo "+---------------------------------------------------------------------------------" | tee -a "${R_LOGFILE}"
 rsync ${R_OPTIONS} ${R_EXCLUDE} -e "ssh -T -c none -o Compression=no -x" ${R_SRC} ${R_DEST}
-echo "+ $(date) Transfer completed" | tee -a ${R_LOGFILE}
+echo "+ $(date) Transfer completed" | tee -a "${R_LOGFILE}"
 exit
 
