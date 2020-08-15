@@ -4,7 +4,7 @@ The __rsync__ command -- whether used standalone or installed as a module -- is 
 
 ### Purpose
 
-I wrote these wrapper scripts for the purpose of duplicating datasets from my primary to my secondary FreeNAS server. Because FreeNAS is based on FreeBSD, these scripts are somewhat FreeBSD-centric. But __rsync__ is a common tool on all UNIX-style systems, so it shouldn't take much effort to port the scripts to run successfully on Linux distributions, and in fact, I have used earlier versions of these scripts to transfer data to a Linux-based Synology Diskstation NAS system.
+I wrote these wrapper scripts for the purpose of duplicating datasets from my primary to my secondary FreeNAS server. Because FreeNAS is based on FreeBSD, these scripts _might_ be somewhat FreeBSD-centric. But __rsync__ is a common tool on all UNIX-style systems, so it shouldn't take much effort to port the scripts to run successfully on Linux distributions, and in fact, I have used earlier versions of these scripts to transfer data to a Linux-based Synology Diskstation NAS system.
 
 My goal was to copy new or changed files and also to delete files on the target that don't exist on the source. If your needs are different, particularly if you want to keep files on the target that have been deleted on the source, then you will need to remove the `--inplace` and  `--delete-during` options used in the scripts.
 
