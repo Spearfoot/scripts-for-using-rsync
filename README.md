@@ -73,7 +73,7 @@ Copying Windows ACLs can be a problem on some systems, particularly FreeNAS/Free
 -p, --perms   Preserve permissions
 -A, --acls    Preserve ACLs (implies -p)
 ```
-See my post [url=https://www.ixsystems.com/community/threads/impaired-rsync-permissions-support-for-windows-datasets.43973/]"Impaired rsync permissions support for Windows datasets"[/url] on the iXsystem FreeNAS forum for further discussion on this issue.
+See my post ["Impaired rsync permissions support for Windows datasets"](https://www.ixsystems.com/community/threads/impaired-rsync-permissions-support-for-windows-datasets.43973) on the iXsystem FreeNAS forum for further discussion on this issue.
 
 On some Linux distributions, __rsync__ may support copying Windows ACLs directly, while on others it will not. In the latter case, users have reported success using __robocopy__ in conjunction with __rsync__ to transfer Windows ACL data.
 
